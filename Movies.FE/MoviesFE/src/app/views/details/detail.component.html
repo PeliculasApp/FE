@@ -1,28 +1,42 @@
-
 <div class="container" *ngIf="dataMovie!=undefined">
-    <br>
-    <div class="row">
-      <div class="col-5">
-        <img src="https://image.tmdb.org/t/p/w500{{dataMovie.background}}" class="" alt="...">
-      </div>
-      <div class="col-7">
-        <h1>{{dataMovie.name}}</h1>
-        <p>{{dataMovie.description}}</p>
-        <a [routerLink]="[ '/home', { movieToSearch: search }]" class="btn btn-primary d-grid">Inicio</a>
-      </div>
+  <br>
+  <div class="row">
+    <div class="col-5">
+      <img src="https://image.tmdb.org/t/p/w500{{dataMovie.background}}" class="" alt="...">
     </div>
-    <br>
-    <h4>Actores</h4>
-    <div class="row">
-        <div class="card-group">
-          <div class="col-1" *ngFor="let actor of dataMovie.actors">
-            <div class="card" >
-            <img src="https://image.tmdb.org/t/p/w500{{actor.background}}" class="card-img-top" style="width: 100%;">
-              <div class="card-body">
-                <p class="card-text">{{actor.name}} </p>
-              </div>
-            </div>
+    <div class="col-7">
+      <h1>{{dataMovie.name}}</h1>
+      <p>{{dataMovie.description}}</p>
+      <br>
+      <p>
+        <span *ngFor="let genre of dataMovie.genres" class="badge bg-success" style="margin-right: 2px;">
+          {{genre.name}}
+        </span>
+      </p>
+
+      <a [routerLink]="[ '/home', { movieToSearch: search }]" class="btn btn-primary d-grid">Inicio</a>
+    </div>
+  </div>
+  <br>
+  <h4>Actores</h4>
+  <div class="row">
+    <div class="card-group">
+      <div class="col-1" *ngFor="let actor of dataMovie.actors">
+        <div class="card">
+          <img *ngIf="actor.background != ''" src="https://image.tmdb.org/t/p/w500{{actor.background}}"
+            class="card-img-top" style="width: 100%;">
+          <svg *ngIf="actor.background == ''" class="bd-placeholder-img card-img-top" width="100%" height="180"
+            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap"
+            preserveAspectRatio="xMidYMid slice" focusable="false">
+            <title>Placeholder</title>
+            <rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6"
+              dy=".3em"></text>
+          </svg>
+          <div class="card-body">
+            <p class="card-text">{{actor.name}} </p>
           </div>
         </div>
       </div>
+    </div>
   </div>
+</div>
