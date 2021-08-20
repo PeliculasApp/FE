@@ -17,4 +17,9 @@ export class MoviesService {
         let query = `${URL}Movie/${title}/Title`;
         return this.http.get<Movie[]>(query);
     }
+    /**Obtiene peliculas por el titulo */
+    getMovieById(idMovie?: string){
+      let query = `${URL}Movie/${idMovie}`;
+      return this.http.get<Movie>(query);
+  }
 }

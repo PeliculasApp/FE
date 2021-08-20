@@ -1,0 +1,28 @@
+
+<div class="container" *ngIf="dataMovie!=undefined">
+    <br>
+    <div class="row">
+      <div class="col-5">
+        <img src="https://image.tmdb.org/t/p/w500{{dataMovie.background}}" class="" alt="...">
+      </div>
+      <div class="col-7">
+        <h1>{{dataMovie.name}}</h1>
+        <p>{{dataMovie.description}}</p>
+        <a [routerLink]="[ '/home', { movieToSearch: search }]" class="btn btn-primary d-grid">Inicio</a>
+      </div>
+    </div>
+    <br>
+    <h4>Actores</h4>
+    <div class="row">
+        <div class="card-group">
+          <div class="col-1" *ngFor="let actor of dataMovie.actors">
+            <div class="card" >
+            <img src="https://image.tmdb.org/t/p/w500{{actor.background}}" class="card-img-top" style="width: 100%;">
+              <div class="card-body">
+                <p class="card-text">{{actor.name}} </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

@@ -1,0 +1,36 @@
+
+<div class="bd-example bd-example-position-utils">
+     
+      <div class="position-relative">
+        <div class="position-absolute top-0 start-50 translate-middle-x">
+          <br>
+          <h2>Buscar peliculas</h2>
+          <form class="row g-3">
+            <div class="col-auto">
+               <input type="text" [(ngModel)]="movieToSearch" name="text" class="form-control" id="inputPassword2" placeholder=""> 
+            </div>
+            <div class="col-auto">
+               <button type="button" class="btn btn-primary mb-3" (click)="getMovie()">Buscar</button> 
+            </div>
+          </form>
+        </div>
+      </div>
+    
+  </div>
+  <br><br><br><br><br><br>
+  <div class="container">
+    <div class="row">
+      <div class="card-group">
+        <div class="col-3" *ngFor="let movie of movies">
+          <div class="card" >
+            <img src="https://image.tmdb.org/t/p/w500{{movie.background}}" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">{{movie.name}}</h5>
+              <p class="card-text">{{movie.description | slice: 0: oculto}} ...</p>
+              <a [routerLink]="[ '/detail', { idMovie: movie.id, search: movieToSearch } ]" class="btn btn-primary d-grid">Detalle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
